@@ -11,6 +11,7 @@ import tn.esprit.projet.repository.EtudiantRepository;
 import tn.esprit.projet.util.HelperClass;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class ContratServiceImp implements IContratService {
     @Override
     public List<Contrat> retrieveAllContrats() {
         return contratRepository.findAll();
+
+
+
     }
 
     @Override
@@ -82,6 +86,7 @@ public class ContratServiceImp implements IContratService {
     }
     @Override
     public void retrieveAndUpdateStatusContrat() {
+        /*
         //Archive all exprired contracts
         this.archiveAllExpiredContracts();
 
@@ -89,5 +94,5 @@ public class ContratServiceImp implements IContratService {
                 .stream()
                 .filter(contrat -> HelperClass.getDate(LocalDate.now(),contrat.getDateFinContrat())<16)
                 .forEach(contrat -> System.out.println("le contrat de l'etudiant"+contrat.getEtudiant().getNomE()+"va exprirer"));
-    }
+   */ }
 }

@@ -1,5 +1,6 @@
 package tn.esprit.projet.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -24,8 +25,10 @@ public class Etudiant {
     @ManyToOne
     private Departement departement;
     @ManyToMany
+    @JsonIgnore
     private Set<Equipe> listEquipes = new HashSet<>();
     @OneToMany(mappedBy = "etudiant")
+    @JsonIgnore
     private Set <Contrat> listContrat = new HashSet<>();
 
 

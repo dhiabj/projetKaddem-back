@@ -21,9 +21,8 @@ public class Contrat implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idContrat;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date dateDebutContrat;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+
+    private LocalDate dateDebutContrat;
     private LocalDate dateFinContrat;
     @Enumerated(EnumType.STRING)
    private Specialite specialite;

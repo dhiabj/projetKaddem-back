@@ -22,4 +22,7 @@ void removeEtudiant(Integer idEtudiant);
 
     public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe);
     List<Etudiant> getEtudiantsByDepartement (Integer idDepart);
+
+
+
 }
