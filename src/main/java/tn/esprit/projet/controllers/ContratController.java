@@ -1,14 +1,17 @@
 package tn.esprit.projet.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.projet.entities.Contrat;
 import tn.esprit.projet.services.IContratService;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class ContratController {
 
     @Autowired
@@ -46,16 +49,22 @@ public class ContratController {
 
     }
 
-    @PutMapping(value = "/affectContratToEtudiant/{nomE}/{prenomE}")
+    @PostMapping(value = "/affectContratToEtudiant/{idContrat}/{idEtudiant}")
     @ResponseBody
-    public Contrat affectContratToEtudiant(@RequestBody Contrat c, @PathVariable String nomE, @PathVariable String prenomE) {
-        return  iContratService.affectContratToEtudiant(c, nomE, prenomE);
+    public Contrat affectContratToEtudiant( @PathVariable Integer idContrat, @PathVariable Integer idEtudiant) {
+        return  iContratService.affectContratToEtudiant( idContrat, idEtudiant);
 
     }
 
-    @GetMapping(value = "/nbContratsValides")
-    @ResponseBody
-    public int getAllContratValides(@RequestBody Date d1, @RequestBody Date d2 ) {
-        return iContratService.nbContratsValides(d1,d2);
+    @GetMapping(value = "/nbContratsValides/{startDate}/{endDate}")
+    public Integer getAllContratValides(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+                                        @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate ) {
+        return iContratService.nbContratsValides(startDate,endDate);
+    }
+
+    @GetMapping(value = "/sumMontant/{startDate}/{endDate}")
+    public Integer getMontantContratEntreDeuxDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+                                                @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate ) {
+        return iContratService.getMontantContratEntreDeuxDate(startDate,endDate);
     }
 }

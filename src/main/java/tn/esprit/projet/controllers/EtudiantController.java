@@ -11,6 +11,7 @@ import tn.esprit.projet.services.IEtudiantService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class EtudiantController {
 
     @Autowired

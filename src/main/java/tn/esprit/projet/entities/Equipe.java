@@ -17,6 +17,7 @@ public class Equipe {
     @Setter(AccessLevel.NONE)
     private int idEquipe;
     private String nomEquipe;
+    @Enumerated(EnumType.STRING)
     private Niveau niveau;
     @ManyToMany(mappedBy = "listEquipes")
     private Set<Etudiant> listEtud;
