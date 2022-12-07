@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class ContratServiceImp implements IContratService {
 
     @Autowired /*field injection*/
-    ContratRepository contratRepository;
+            ContratRepository contratRepository;
 
 
     private EtudiantRepository etudiantRepository;

@@ -1,5 +1,6 @@
 package tn.esprit.projet.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class Equipe {
     private String nomEquipe;
     @Enumerated(EnumType.STRING)
     private Niveau niveau;
+    @JsonIgnore
     @ManyToMany(mappedBy = "listEquipes")
     private Set<Etudiant> listEtud;
     @OneToOne
