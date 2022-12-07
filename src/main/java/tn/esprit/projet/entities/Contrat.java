@@ -27,7 +27,7 @@ public class Contrat implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateFinContrat;
     @Enumerated(EnumType.STRING)
-   private Specialite specialite;
+    private Specialite specialite;
     private Boolean archive;
     private int montantContrat;
     @ManyToOne(cascade = CascadeType.PERSIST)
