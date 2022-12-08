@@ -2,7 +2,6 @@ package tn.esprit.projet.services;
 
 import tn.esprit.projet.entities.Contrat;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -13,10 +12,9 @@ public interface IContratService {
    public Contrat updateContrat (Contrat ce, Integer idContrat);
    public Contrat retrieveContrat (Integer idContrat);
     public void removeContrat(Integer idContrat);
-    Contrat affectContratToEtudiant ( Integer idContrat, Integer idEtudiant);
+    Contrat affectContratToEtudiant (Contrat ce, String nomE, String prenomE);
 
-    Integer nbContratsValides(LocalDate startDate, LocalDate endDate);
-    Integer getMontantContratEntreDeuxDate(LocalDate statDate, LocalDate endDate);
+    Integer nbContratsValides(Date startDate, Date endDate);
 
     public void retrieveAndUpdateStatusContrat();
 }

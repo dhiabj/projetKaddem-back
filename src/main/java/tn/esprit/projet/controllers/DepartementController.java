@@ -9,33 +9,38 @@ import tn.esprit.projet.services.IDepartementService;
 
 import java.util.List;
 import java.util.Set;
-
+@RequestMapping("/Departement")
+@CrossOrigin(origins = "*")
 @RestController
-
-@CrossOrigin(origins = "http://localhost:4200")
 public class DepartementController {
 
     @Autowired
     IDepartementService iDepartementService;
 
-@GetMapping("/Departements")
+@GetMapping()
     public List<Departement> retrieveAllDepartements() {
         return iDepartementService.retrieveAllDepartements();
     }
 
-@PostMapping("/addDepartement")
+@PostMapping()
     public Departement addDepartement(@RequestBody Departement d) {
         return iDepartementService.addDepartement(d);
     }
 
-@PutMapping("/updateDepartement/{idDepart}")
+@PutMapping("/{idDepart}")
     public Departement updateDepartement(@RequestBody Departement d, @PathVariable Integer idDepart) {
         return iDepartementService.updateDepartement(d,idDepart);
     }
 
-@GetMapping("/Departement/{idDepart}")
+@GetMapping("/{idDepart}")
     public Departement retrieveDepartement(@PathVariable Integer idDepart) {
         return iDepartementService.retrieveDepartement(idDepart);
+    }
+
+    @DeleteMapping("/{idDepart}")
+    public void removedep( @PathVariable Integer idDepart) {
+        iDepartementService.removeDepart(
+                idDepart);
     }
 
     @GetMapping(value = "/departments/{idUniversite}")

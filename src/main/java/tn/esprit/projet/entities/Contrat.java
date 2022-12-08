@@ -1,7 +1,6 @@
 package tn.esprit.projet.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,15 +22,12 @@ public class Contrat implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idContrat;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate dateDebutContrat;
+    private Date dateDebutContrat;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateFinContrat;
     @Enumerated(EnumType.STRING)
-    private Specialite specialite;
+   private Specialite specialite;
     private Boolean archive;
-    private int montantContrat;
-
-    //@JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Etudiant etudiant;
 

@@ -12,6 +12,7 @@ public interface IDepartementService {
  Departement updateDepartement (Departement d, Integer idDepart);
  Departement retrieveDepartement(Integer idDepart);
  public Set<Departement> retrieveDepartementsByUniversite(Integer idUniversite);
+    void removeDepart (Integer idDepart);
 
 
 }

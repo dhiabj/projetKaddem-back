@@ -8,34 +8,34 @@ import tn.esprit.projet.repository.UniversiteRepository;
 import tn.esprit.projet.services.IUniversiteService;
 
 import java.util.List;
-
+@RequestMapping("Universite")
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 public class UniversiteController {
     @Autowired
     IUniversiteService iUniversiteService;
 
-    @GetMapping("/Universites")
+    @GetMapping()
     public List<Universite> retrieveAllUniversites() {
         return iUniversiteService.retrieveAllUniversites();
     }
 
-    @PostMapping("/addUniversite")
+    @PostMapping()
     public Universite addUniversite(@RequestBody Universite u) {
         return iUniversiteService.addUniversite(u);
     }
 
-    @PutMapping("/updateUniversite/{idUniversite}")
+    @PutMapping("/{idUniversite}")
     public Universite updateUniversite(@RequestBody Universite u, @PathVariable Integer idUniversite) {
         return iUniversiteService.updateUniversite(u,idUniversite);
     }
 
-    @GetMapping("/universite/{idUniversite}")
+    @GetMapping("/{idUniversite}")
     public Universite retrieveUniversite(@PathVariable Integer idUniversite) {
         return iUniversiteService.retrieveUniversite(idUniversite);
     }
 
-    @DeleteMapping("/removeUniversite/{idUniversite}")
+    @DeleteMapping("/{idUniversite}")
     public void removeUniversite( @PathVariable Integer idUniversite) {
         iUniversiteService.removeUniversite(idUniversite);
     }

@@ -11,7 +11,6 @@ import tn.esprit.projet.services.IEtudiantService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class EtudiantController {
 
     @Autowired
@@ -46,8 +45,7 @@ public class EtudiantController {
 
     }
 
-
-    @PutMapping("/assignED/{etudiantId}/{departementId}")
+    @PostMapping("/assignED/{etudiantId}/{departementId}")
     public void assignEtudiantToDepartement(@PathVariable Integer etudiantId,@PathVariable Integer departementId)
     {
 this.iEtudiantService.assignEtudiantToDepartement(etudiantId,departementId);

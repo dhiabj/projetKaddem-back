@@ -53,5 +53,10 @@ public class DepartementServiceImp implements IDepartementService{
 
     }
 
+    @Override
+    public void removeDepart(Integer idDepart) {
+        departementRepository.deleteById(idDepart);
+    }
+
 
 }

@@ -13,14 +13,13 @@ import tn.esprit.projet.util.HelperClass;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
 public class ContratServiceImp implements IContratService {
 
     @Autowired /*field injection*/
-            ContratRepository contratRepository;
+    ContratRepository contratRepository;
 
 
     private EtudiantRepository etudiantRepository;
@@ -42,7 +41,6 @@ public class ContratServiceImp implements IContratService {
         contrat.setDateDebutContrat(ce.getDateDebutContrat());
         contrat.setArchive(ce.getArchive());
         contrat.setSpecialite(ce.getSpecialite());
-        contrat.setMontantContrat(ce.getMontantContrat());
         return contratRepository.save(contrat);
     }
 
@@ -58,35 +56,22 @@ public class ContratServiceImp implements IContratService {
     }
 
     @Override
-    public Contrat affectContratToEtudiant( Integer idContrat, Integer idEtudiant) {
-        Etudiant  etudiant = etudiantRepository.findById(idEtudiant).orElse(null);
-        Contrat ce = contratRepository.findById(idContrat).orElse(null);
+    public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+        Etudiant  etudiant = etudiantRepository.findByNomEAndPrenomE(nomE,prenomE);
         int sommeContratActive = 0;
         sommeContratActive = (int) etudiant.getListContrat().stream().filter(c->c.getArchive()).count();
         if(sommeContratActive <5) {
             ce.setEtudiant(etudiant);
+            contratRepository.save(ce);
         }
         return contratRepository.save(ce);
     }
 
     @Override
-    public Integer nbContratsValides(LocalDate startDate, LocalDate endDate) {
-        List<Contrat> listContrats = contratRepository.findContratBetweenTwoDates(startDate,endDate);
+    public Integer nbContratsValides(Date startDate, Date endDate) {
+        List<Contrat> listeallcontrats = contratRepository.findAll();
 
-        return ( int ) listContrats.stream().filter(c-> !c.getArchive()).count();
-    }
-
-    @Override
-    public Integer getMontantContratEntreDeuxDate(LocalDate startDate, LocalDate endDate) {
-        List<Contrat> listContratsBetweenTwoDates = contratRepository.findContratBetweenTwoDates(startDate,endDate).stream().filter(c-> !c.getArchive()).collect(Collectors.toList());
-
-        System.out.println(listContratsBetweenTwoDates);
-
-        int chiffre=0;
-        for( Contrat c:listContratsBetweenTwoDates){
-            chiffre=chiffre+c.getMontantContrat();
-        }
-        return chiffre;
+        return ( int ) listeallcontrats.stream().filter(c-> !c.getArchive()).count();
     }
 
     @Transactional
