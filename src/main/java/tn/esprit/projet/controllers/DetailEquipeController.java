@@ -8,8 +8,8 @@ import tn.esprit.projet.services.IDetailEquipe;
 import tn.esprit.projet.services.IEquipeService;
 
 import java.util.List;
-@CrossOrigin(origins ="*")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class DetailEquipeController {
     @Autowired
     IDetailEquipe iDetailEquipe;
@@ -19,12 +19,13 @@ public class DetailEquipeController {
     {
         return iDetailEquipe.addDetailEquipe(detailEquipe);
     }
-    @CrossOrigin(origins ="*")
+
     @GetMapping("/getAllDetailEquipes")
     public List<DetailEquipe> retrieveAllDetailEquipes()
     {
         return iDetailEquipe.getAllDE();
     }
+
     @GetMapping("/getDEquipe/{id}")
     public DetailEquipe retrieveEquipe(@PathVariable Integer id)
     {

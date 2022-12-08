@@ -10,6 +10,7 @@ import tn.esprit.projet.services.IUniversiteService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UniversiteController {
     @Autowired
     IUniversiteService iUniversiteService;

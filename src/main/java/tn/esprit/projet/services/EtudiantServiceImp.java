@@ -36,11 +36,13 @@ public class EtudiantServiceImp implements IEtudiantService{
 
     @Override
     public Etudiant updateEtudiant(Etudiant e, Integer idEtudiant) {
-        Etudiant etudiant = etudiantRepository.findById(idEtudiant).orElse(null);
-        etudiant.setNomE(e.getNomE());
-        etudiant.setPrenomE(e.getPrenomE());
-        etudiant.setOption(e.getOption());
-        return etudiantRepository.save(etudiant);
+        Etudiant ee=etudiantRepository.findById(idEtudiant).orElse(null);
+        ee.setNomE(e.getNomE());
+        ee.setPrenomE(e.getPrenomE());
+        ee.setOption(e.getOption());
+        ee.setDepartement(e.getDepartement());
+        return etudiantRepository.save(ee);
+
     }
 
     @Override

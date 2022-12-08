@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
+
+@CrossOrigin(origins = "http://localhost:4200")
 public class DepartementController {
 
     @Autowired

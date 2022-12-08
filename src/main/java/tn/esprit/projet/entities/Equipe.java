@@ -24,6 +24,7 @@ public class Equipe {
     @ManyToMany(mappedBy = "listEquipes")
     private Set<Etudiant> listEtud;
     @OneToOne
+    @JsonIgnore
     private DetailEquipe detailEquipe;
 
 

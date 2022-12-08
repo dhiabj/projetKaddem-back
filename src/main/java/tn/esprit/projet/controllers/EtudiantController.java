@@ -46,7 +46,8 @@ public class EtudiantController {
 
     }
 
-    @PostMapping("/assignED/{etudiantId}/{departementId}")
+
+    @PutMapping("/assignED/{etudiantId}/{departementId}")
     public void assignEtudiantToDepartement(@PathVariable Integer etudiantId,@PathVariable Integer departementId)
     {
 this.iEtudiantService.assignEtudiantToDepartement(etudiantId,departementId);

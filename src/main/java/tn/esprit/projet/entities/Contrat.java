@@ -30,6 +30,8 @@ public class Contrat implements Serializable {
     private Specialite specialite;
     private Boolean archive;
     private int montantContrat;
+
+    //@JsonIgnore
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Etudiant etudiant;
 
