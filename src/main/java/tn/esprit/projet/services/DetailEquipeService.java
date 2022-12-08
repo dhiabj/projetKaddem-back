@@ -21,4 +21,22 @@ public class DetailEquipeService implements IDetailEquipe{
     public List<DetailEquipe> getAllDE() {
         return detailEquipeRepository.findAll();
     }
+
+    @Override
+    public DetailEquipe getDe(Integer id){ return detailEquipeRepository.findById(id).orElse(null);}
+
+    @Override
+    public void removeDetailEquipe (Integer id){
+        detailEquipeRepository.deleteById(id);
+
+    }
+    @Override
+    public DetailEquipe updateDetailEquipe (DetailEquipe e, Integer id){
+        DetailEquipe de= detailEquipeRepository.findById(id).orElse(null);
+        de.setSalle(e.getSalle());
+        de.setThematique(e.getThematique());
+        return detailEquipeRepository.save(de);
+
+
+    }
 }
