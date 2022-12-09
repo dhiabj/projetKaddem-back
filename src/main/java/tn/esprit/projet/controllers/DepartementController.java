@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-
 @CrossOrigin(origins = "http://localhost:4200")
 public class DepartementController {
 
@@ -41,6 +40,35 @@ public class DepartementController {
     @GetMapping(value = "/departments/{idUniversite}")
     @ResponseBody
     public Set<Departement> getAllEtudiantsbyDepartmentId(@PathVariable("idUniversite")Integer idUniversite) {
+        return iDepartementService.retrieveDepartementsByUniversite(idUniversite) ;
+    }
+
+    @GetMapping("/Departement")
+    public List<Departement> retrieveAllDepartementsA() {
+        return iDepartementService.retrieveAllDepartements();
+    }
+
+    @PostMapping("/Departement")
+    public Departement addDepartementA(@RequestBody Departement d) {
+        return iDepartementService.addDepartement(d);
+    }
+
+    @PutMapping("/Departement/{idDepart}")
+    public Departement updateDepartementA(@RequestBody Departement d, @PathVariable Integer idDepart) {
+        return iDepartementService.updateDepartement(d,idDepart);
+    }
+
+    
+
+    @DeleteMapping("/Departement/{idDepart}")
+    public void removedep( @PathVariable Integer idDepart) {
+        iDepartementService.removeDepart(
+                idDepart);
+    }
+
+    @GetMapping(value = "/Departement/departments/{idUniversite}")
+    @ResponseBody
+    public Set<Departement> getAllEtudiantsbyDepartmentIdA(@PathVariable("idUniversite")Integer idUniversite) {
         return iDepartementService.retrieveDepartementsByUniversite(idUniversite) ;
     }
 }

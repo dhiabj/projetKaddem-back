@@ -17,7 +17,10 @@ public class Universite {
     @Setter(AccessLevel.NONE)
     private int idUniv;
     private String nomUniv;
+    @Enumerated(EnumType.STRING)
+    private Etat etat;
     @OneToMany
     private Set<Departement> listDep;
+
 
 }

@@ -44,4 +44,34 @@ public class UniversiteController {
     public void  assignUniversiteToDepartement(@PathVariable("idUniversite") Integer idUniversite,@PathVariable("idDepartement")Integer idDepartement){
         iUniversiteService.assignUniversiteToDepartement(idUniversite,idDepartement);
     }
+
+    @GetMapping("/Universite")
+    public List<Universite> retrieveAllUniversitesA() {
+        return iUniversiteService.retrieveAllUniversites();
+    }
+
+    @PostMapping("/Universite")
+    public Universite addUniversiteA(@RequestBody Universite u) {
+        return iUniversiteService.addUniversite(u);
+    }
+
+    @PutMapping("/Universite/{idUniversite}")
+    public Universite updateUniversiteA(@RequestBody Universite u, @PathVariable Integer idUniversite) {
+        return iUniversiteService.updateUniversite(u,idUniversite);
+    }
+
+    @GetMapping("/Universite/{idUniversite}")
+    public Universite retrieveUniversiteA(@PathVariable Integer idUniversite) {
+        return iUniversiteService.retrieveUniversite(idUniversite);
+    }
+
+    @DeleteMapping("/Universite/{idUniversite}")
+    public void removeUniversiteA( @PathVariable Integer idUniversite) {
+        iUniversiteService.removeUniversite(idUniversite);
+    }
+
+    @PostMapping("/Universite/assignUD/{idUniversite}/{idDepartement}")
+    public void  assignUniversiteToDepartementA(@PathVariable("idUniversite") Integer idUniversite,@PathVariable("idDepartement")Integer idDepartement){
+        iUniversiteService.assignUniversiteToDepartement(idUniversite,idDepartement);
+    }
 }
