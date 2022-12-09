@@ -58,7 +58,7 @@ public class DepartementController {
         return iDepartementService.updateDepartement(d,idDepart);
     }
 
-    
+
 
     @DeleteMapping("/Departement/{idDepart}")
     public void removedep( @PathVariable Integer idDepart) {
