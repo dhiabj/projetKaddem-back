@@ -67,4 +67,10 @@ public class ContratController {
                                                 @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate ) {
         return iContratService.getMontantContratEntreDeuxDate(startDate,endDate);
     }
+
+    @GetMapping(value = "/contrats/{startDate}/{endDate}")
+    public List<Contrat> getAllContratsBetweenTwoDates(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate startDate,
+                                        @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate endDate ) {
+        return iContratService.getContratsEntreDeuxDate(startDate,endDate);
+    }
 }

@@ -17,6 +17,7 @@ public interface IContratService {
 
     Integer nbContratsValides(LocalDate startDate, LocalDate endDate);
     Integer getMontantContratEntreDeuxDate(LocalDate statDate, LocalDate endDate);
+    List<Contrat> getContratsEntreDeuxDate(LocalDate statDate, LocalDate endDate);
 
     public void retrieveAndUpdateStatusContrat();
 }

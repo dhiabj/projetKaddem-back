@@ -89,6 +89,13 @@ public class ContratServiceImp implements IContratService {
         return chiffre;
     }
 
+    @Override
+    public List<Contrat> getContratsEntreDeuxDate(LocalDate startDate, LocalDate endDate) {
+        List<Contrat> listContratsBetweenTwoDates = contratRepository.findContratBetweenTwoDates(startDate,endDate).stream()
+                .filter(c-> !c.getArchive()).collect(Collectors.toList());
+        return listContratsBetweenTwoDates;
+    }
+
     @Transactional
     //use this annotation to commit all managed entities without using the save function ""contartRepository.save(..).""
     public void archiveAllExpiredContracts(){
