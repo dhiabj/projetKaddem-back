@@ -39,4 +39,34 @@ public class DetailEquipeService implements IDetailEquipe{
 
 
     }
+
+    @Override
+    public Integer getNbrThematiqueLangue() {
+     int nbr = (int) detailEquipeRepository.findAll().stream().filter(
+             de-> de.getThematique().toString()=="LANGUE"
+     ).count();
+        return  nbr;
+    }
+
+    @Override
+    public Integer getNbrThematiqueScience() {
+        int nbr = (int) detailEquipeRepository.findAll().stream().filter(
+                de-> de.getThematique().toString()=="SCIENTIFIQUE"
+        ).count();
+        return  nbr;
+    }
+    @Override
+    public Integer getNbrThematiqueMaths() {
+        int nbr = (int) detailEquipeRepository.findAll().stream().filter(
+                de-> de.getThematique().toString()=="MATHEMATIQUE"
+        ).count();
+        return  nbr;
+    }
+    @Override
+    public Integer getNbrThematiqueHistoire() {
+        int nbr = (int) detailEquipeRepository.findAll().stream().filter(
+                de-> de.getThematique().toString()=="HISTOIRE"
+        ).count();
+        return  nbr;
+    }
 }

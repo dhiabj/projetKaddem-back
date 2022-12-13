@@ -11,4 +11,8 @@ public interface IDetailEquipe {
     public DetailEquipe getDe(Integer id);
     void removeDetailEquipe (Integer id);
     DetailEquipe updateDetailEquipe (DetailEquipe e, Integer idEquipe);
+    Integer getNbrThematiqueLangue();
+    Integer getNbrThematiqueScience();
+    Integer getNbrThematiqueMaths();
+    Integer getNbrThematiqueHistoire();
 }

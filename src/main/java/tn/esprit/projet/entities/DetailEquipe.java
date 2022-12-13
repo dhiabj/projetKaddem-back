@@ -15,7 +15,8 @@ public class DetailEquipe {
     @Setter(AccessLevel.NONE)
     private int idDetailEquipe;
     private int salle;
-    private String thematique;
+    @Enumerated(EnumType.STRING)
+    private thematique thematique;
     @OneToOne
     private Equipe Equipe ;
 }

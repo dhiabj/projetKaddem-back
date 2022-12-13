@@ -41,5 +41,26 @@ public class DetailEquipeController {
     public DetailEquipe updateEquipe(@RequestBody DetailEquipe e, @PathVariable Integer id) {
         return iDetailEquipe.updateDetailEquipe(e,id);
     }
+
+    @GetMapping("/nbLangue")
+    public Integer retrieveLangue()
+    {
+        return iDetailEquipe.getNbrThematiqueLangue();
+    }
+    @GetMapping("/nbScience")
+    public Integer retrieveScience()
+    {
+        return iDetailEquipe.getNbrThematiqueScience();
+    }
+    @GetMapping("/nbmath")
+    public Integer retrieveMaths()
+    {
+        return iDetailEquipe.getNbrThematiqueMaths();
+    }
+    @GetMapping("/nbhist")
+    public Integer retrieveHistoire()
+    {
+        return iDetailEquipe.getNbrThematiqueHistoire();
+    }
 }
 
